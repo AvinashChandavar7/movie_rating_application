@@ -24,8 +24,8 @@ const movieSchema = new Schema(
     description: { type: String, required: true },
     reviews: [{
       user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-      rating: { type: Number, required: true },
-      text: { type: String, required: true },
+      rating: { type: Number, min: 0, max: 5 },
+      text: { type: String, },
     }],
   },
   { timestamps: true }
