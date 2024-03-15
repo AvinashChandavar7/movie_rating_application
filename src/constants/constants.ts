@@ -1,1 +1,1 @@
-export const DB_NAME = "" as string;
+export const DB_NAME = "movie_rating_application" as string;
