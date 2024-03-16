@@ -6,7 +6,7 @@ import User from "../models/users.model";
 
 
 const registerUser = asyncHandler(async (req, res) => {
-
+  //#swagger.tags = ['User']
 
   const { userName, email, password } = req.body;
 
@@ -43,6 +43,8 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 const loginUser = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['User']
+
   const { email, password } = req.body;
 
 
@@ -77,6 +79,7 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 
 const logoutUser = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['User']
   return res.status(200)
     .cookie("auth_Token", "", { expires: new Date(0) })
     .json(new ApiResponse(200, "User successfully Log Out"));
@@ -84,12 +87,15 @@ const logoutUser = asyncHandler(async (req, res) => {
 
 
 const tokenValidation = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['User']
   return res.status(200)
     .json(new ApiResponse(200, { userId: req.userId }, "Token Validation"));
 })
 
 
 const getCurrentUser = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['User']
+
   const userId = req.userId;
 
   const user = await User.findById(userId).select("-password");

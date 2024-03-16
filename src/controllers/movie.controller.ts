@@ -7,7 +7,7 @@ import { asyncHandler } from "../utils/asyncHandler";
 import Movie from "../models/movie.model";
 
 const addMovie = asyncHandler(async (req, res) => {
-
+  //#swagger.tags = ['Movies']
   const {
     title, director, genre,
     releaseYear, description
@@ -34,7 +34,7 @@ const addMovie = asyncHandler(async (req, res) => {
 
 
 const updateMovie = asyncHandler(async (req, res) => {
-
+  //#swagger.tags = ['Movies']
   const movieId = req.params.id;
 
   const {
@@ -56,6 +56,8 @@ const updateMovie = asyncHandler(async (req, res) => {
 });
 
 const deleteMovie = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Movies']
+
   const movieId = req.params.id;
 
   const movie = await Movie.findByIdAndDelete(movieId);
@@ -69,6 +71,8 @@ const deleteMovie = asyncHandler(async (req, res) => {
 });
 
 const getMovieDetails = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Movies']
+
   const movieId = req.params.id;
 
   const movie = await Movie.findById(movieId);
@@ -83,6 +87,7 @@ const getMovieDetails = asyncHandler(async (req, res) => {
 });
 
 const listMovies = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Movies']
 
   // const movies = await Movie.find({}).select("");
   const movies = await Movie.find(
@@ -97,6 +102,8 @@ const listMovies = asyncHandler(async (req, res) => {
 // Ratings and Reviews
 
 const rateAndReviewMovie = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Movies -  Ratings and Reviews']
+
   const movieId = req.params.id;
   const userId = req.userId;
   const { rating, text } = req.body;
@@ -132,6 +139,8 @@ const rateAndReviewMovie = asyncHandler(async (req, res) => {
 
 
 const updateReview = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Movies -  Ratings and Reviews']
+
   const { movieId, reviewId } = req.params;
   const { rating, text } = req.body;
 
@@ -158,6 +167,8 @@ const updateReview = asyncHandler(async (req, res) => {
 });
 
 const deleteReview = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Movies -  Ratings and Reviews']
+
   const { movieId, reviewId } = req.params;
 
   const movie = await Movie.findByIdAndUpdate(
@@ -175,6 +186,8 @@ const deleteReview = asyncHandler(async (req, res) => {
 });
 
 const listReviews = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Movies -  Ratings and Reviews']
+
   const movieId = req.params.id;
 
   const movie = await Movie.findById(movieId);
@@ -188,6 +201,8 @@ const listReviews = asyncHandler(async (req, res) => {
 });
 
 const averageRating = asyncHandler(async (req, res) => {
+  //#swagger.tags = ['Movies -  Ratings and Reviews']
+
   const movieId = req.params.id;
 
   if (!movieId) {

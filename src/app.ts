@@ -4,6 +4,10 @@ import "dotenv/config";
 import cookieParser from "cookie-parser";
 import path from 'path';
 
+
+import swaggerUi from "swagger-ui-express";
+import swaggerOutput from "./json/swagger_output.json";
+
 const app = express();
 
 app.use(express.json());
@@ -24,5 +28,10 @@ import movieRoutes from "./routes/movies.routes"
 
 app.use("/api/v1/users", userRoutes)
 app.use("/api/v1/movies", movieRoutes)
+
+
+const options = { explorer: true, }
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerOutput, options));
+
 
 export { app };
